@@ -20,23 +20,22 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import { api } from '@/services/api'; // Verifique o caminho para garantir que está correto
+import { api } from '@/services/api'; // Certifique-se de que este caminho está correto
 
 export default {
   setup() {
     const loading = ref(false);
     const assinaturas = ref([]);
 
-    // Função para formatar moeda de forma apropriada
     const formatCurrency = (value) => {
       return `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     };
 
-    // Função para buscar os dados da API
+
     const fetchData = async () => {
       loading.value = true;
       try {
-        // Substitua '/getdata' pelo endpoint correto, se necessário
+      
         const response = await api.get('/getdata');
         assinaturas.value = response.data.map(assinatura => ({
           ...assinatura,
@@ -49,12 +48,12 @@ export default {
       }
     };
 
-    // Chama fetchData quando o componente é montado
     onMounted(fetchData);
 
     return {
       loading,
-      assinaturas
+      assinaturas,
+      formatCurrency 
     };
   },
 };

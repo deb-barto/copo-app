@@ -6,6 +6,7 @@ const api = axios.create({
     baseURL: 'https://copy-api-git-deploy-hanabananaas-projects.vercel.app/',
     headers: {
         "Content-Type": "application/json",
+        withCredentials: true,
         Accept: "application/json",
         Authorization: basicAuth
     } 
